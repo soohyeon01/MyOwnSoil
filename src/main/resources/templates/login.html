@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>정원 입장하기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f7f1;
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #4a7c3a;
+        }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4a7c3a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #3a5f2a;
+        }
+        .signup-btn {
+            background: #cccccc;
+            margin-top: 10px;
+        }
+        .signup-btn:hover {
+            background: #b5b5b5;
+        }
+        <!-- 소셜 로그인 버튼 -->
+        .google-btn {
+            background: #DB4437;
+            margin-top: 10px;
+        }
+        .google-btn:hover {
+            background: #b23329;
+        }
+        .kakao-btn {
+            background: #FEE500;
+            color: #3C1E1E;
+            margin-top: 10px;
+        }
+        .kakao-btn:hover {
+            background: #e5cc00;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="title">🌱 나의 정원에 입장합니다</div>
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="정원사 이름" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">입장하기</button>
+    </form>
+
+    <!-- ✅ 소셜 로그인 버튼 추가 -->
+    <form th:action="@{/oauth2/authorization/google}" method="get">
+        <button type="submit" class="google-btn">🔴 Google로 입장</button>
+    </form>
+    <form th:action="@{/oauth2/authorization/kakao}" method="get">
+        <button type="submit" class="kakao-btn">🟡 Kakao로 입장</button>
+    </form>
+
+    <!-- 회원가입 버튼 추가 -->
+    <form th:action="@{/signup}" method="get">
+        <button type="submit" class="signup-btn">🌿 새로운 정원사 되기</button>
+    </form>
+</div>
+</body>
+</html>
